@@ -18,3 +18,9 @@ This API project allows users to:
 - JWT Authentication (for security)
 - Serilog (for logging)
 - Swagger/OpenAPI (API documentation)
+
+## Initial Sqlite Database (EF Code First)
+1. Input Bash to migrations 
+   `dotnet ef migrations add InitialCreate`
+2. Input Bash to Creat Database
+   `dotnet ef database update`
