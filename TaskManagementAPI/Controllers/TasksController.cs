@@ -19,7 +19,7 @@ namespace TaskManagementAPI.Controllers
 
         // GET: /api/Tasks
         [HttpGet]
-        public async Task<IActionResult> GetAllTasks()
+        public async Task<ActionResult<IEnumerable<TaskItem>>> GetAllTasks()
         {
             var tasks = await _taskService.GetTasksAsync();
             return Ok(tasks);
@@ -27,7 +27,7 @@ namespace TaskManagementAPI.Controllers
 
         // GET: /api/Tasks/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTaskById(int id)
+        public async Task<ActionResult<TaskItem>> GetTaskById(int id)
         {
             var task = await _taskService.GetTaskByIdAsync(id);
             if (task == null) return NotFound();
@@ -36,7 +36,7 @@ namespace TaskManagementAPI.Controllers
 
         // POST: /api/Tasks
         [HttpPost]
-        public async Task<IActionResult> CreateTask([FromBody] TaskItem task)
+        public async Task<ActionResult<TaskItem>> CreateTask([FromBody] TaskItem task)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
